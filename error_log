@@ -1,0 +1,12 @@
+[11-Jun-2019 02:38:20 America/Chicago] PHP Warning:  include(../DBentguide/db.php): failed to open stream: No such file or directory in /home/vikrantrajan/public_html/entguide/index.php on line 1
+[11-Jun-2019 02:38:20 America/Chicago] PHP Warning:  include(../DBentguide/db.php): failed to open stream: No such file or directory in /home/vikrantrajan/public_html/entguide/index.php on line 1
+[11-Jun-2019 02:38:20 America/Chicago] PHP Warning:  include(): Failed opening '../DBentguide/db.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home/vikrantrajan/public_html/entguide/index.php on line 1
+[11-Jun-2019 02:38:20 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'ConnectToDB' not found in /home/vikrantrajan/public_html/entguide/includes/navigation.php:25
+Stack trace:
+#0 /home/vikrantrajan/public_html/entguide/index.php(5): include()
+#1 {main}
+  thrown in /home/vikrantrajan/public_html/entguide/includes/navigation.php on line 25
+[18-Jun-2019 01:44:17 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vikrantrajan/public_html/entguide/category.php on line 24
+[18-Jun-2019 01:44:17 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vikrantrajan/public_html/entguide/category.php on line 33
+[04-Oct-2019 23:00:24 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vikrantrajan/public_html/XYeDK3hk/category.php on line 24
+[04-Oct-2019 23:00:24 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vikrantrajan/public_html/XYeDK3hk/category.php on line 33
