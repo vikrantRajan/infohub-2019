@@ -1,0 +1,246 @@
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  
+}
+hr {
+  border: blue 1px dotted;
+}
+body {
+ 
+  background: linear-gradient(-65deg,   #333333,  #022236, black, #002238 ) !important;
+    background-size: 700% 700% !important;
+    animation: gradientAbout 10s ease infinite !important;
+  
+  
+}
+@keyframes gradientAbout  {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+p, ul {
+  color: gainsboro;
+}
+
+.well {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 0px 0;
+  color: blue;
+  
+  border-bottom: none;
+  position: relative;
+ 
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 4px;
+  font-weight: 500;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, rgb(0, 225, 255), rgb(255, 255, 255));
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 7s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+
+}
+.page-footer {
+  padding-bottom: 9px;
+  margin: 40px 0 0px 0;
+  color: blue;
+  
+  border-bottom: none;
+  position: relative;
+ 
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, rgb(0, 17, 255), rgb(245, 0, 224));
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+
+}
+.col-md-8 h1{ color: aquamarine}
+.col-md-8 h2, .col-md-8 h3, .col-md-8 h4, .col-md-8 h5, .col-md-8 h6 {color: gainsboro}
+.col-md-8 ol, .col-md-8 ul, .col-md-8 li { color: gainsboro}
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+#typed {
+  color: aqua;
+  animation: none;
+  background: none;
+  font-size: 18px;
+}
+h1 {
+  font-weight: bold;
+  color: blue;
+  
+}
+h2 {
+  font-weight: 300;
+}
+.navbar-header {
+  width: 50px;
+}
+.navbar-brand {
+  width: 150px;
+  height: 150px;
+}
+.navigation_tags {
+  padding: 10px 0 0 0;
+}
+.sidebar_padding {
+  padding: 30px 0 0 0;
+}
+a,
+.btn {
+  transition: all 0.5s ease-in;
+  color: gainsboro;
+}
+.btn-primary {
+  background: rgb(19, 149, 182);
+  
+}
+
+.btn-primary:hover {
+  background: aquamarine;
+  border: none;
+  box-shadow: aqua 0px 0px 35px 1px;
+  color: #252525;
+
+}
+.alertText{
+  color: rgb(226, 41, 41);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.warningText{
+  color: gold;
+}
+.normalText{
+  color: gainsboro;
+  font-weight: 400;
+}
+
+a:hover {
+  color: aqua;
+  text-decoration: none;
+  border: none;
+  /* background: #c4e4ff; */
+  letter-spacing: 3px;
+}
+.post_content {
+  color: aliceblue;
+}
+.post_content h1, 
+.post_content h2, 
+.post_content h3, 
+.post_content h4, 
+.post_content h5, 
+.post_content h6 {
+color: aqua;
+}
+footer {
+  margin: 0;
+}
+footer .row {
+  background: black;
+  padding: 50px 0 50px 100px;
+  color: white;
+}
+.footer_logo {
+  width: 20%;
+}
+.heading_registration {
+  padding: 40px 0;
+}
+.aboutus {
+  padding: 20px 0;
+}
+.aboutus img {
+  width: 300px;
+  padding: 50px 0;
+}
+.aboutus_graphics {
+  text-align: center;
+  width: 100%;
+}
+
+.aboutusgraphic {
+  width: 100%;
+}
+.contact_form {
+  background: white;
+  text-align: center;
+  margin: 100px auto;
+  padding: 50px;
+  box-shadow: 10px 10px 10px 5px rgb(15, 0, 19);
+}
+.contact_form #btn-login {
+  margin: 20px 0;
+}
+#contact_bg {
+  background: url(../imgs/contact.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 120vh;
+}
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    width: 12%;
+  }
+  .navbar-header {
+    width: 100%;
+  }
+  .navbar-toggle {
+    margin: 20px 0 20px 0;
+  }
+  .footer_logo {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+
+  .navbar-brand {
+    width: 15%;
+  }
+  .navbar-toggle {
+    margin: 20px 0 20px 0;
+  }
+  .footer_logo {
+    width: 40%;
+  }
+}

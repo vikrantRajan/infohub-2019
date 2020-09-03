@@ -1,0 +1,5 @@
+url: http://vikrantrajan.com/rainbowtique
+Admin: http://vikrantrajan.com/rainbowtique/admin/
+
+username: user
+password: vanarts
