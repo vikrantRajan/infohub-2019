@@ -237,6 +237,9 @@
                 $post_image = $row['post_image'];
                 $post_status = $row['post_status'];
                 $post_content = $row['post_content']; 
+                $fh = fopen($post_content,'r');
+                $data = fread($fh,filesize($post_content));
+                fclose($fh);
                 ?>
                 <!-- CLOSING PHP TAG TO DISPLAY 1 SET OF RESULTS IN THE FOLLOWING FORMAT -->
                 <!-- First Blog Post -->
@@ -256,7 +259,7 @@
                 <hr>
                 <img class="img-responsive" src="../imgs/<?php echo $post_image; ?>" alt="">
                 <hr>
-                <p><?php echo $post_content ?></p>
+                <p><?php echo $data ?></p>
                 <hr>
                 <!-- MARKS END OF CONTENT THAT WILL BE LOOPED OVER -->
                 <?php } 

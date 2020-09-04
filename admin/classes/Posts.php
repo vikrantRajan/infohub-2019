@@ -195,11 +195,17 @@ Class Posts
            $post_comment_count = $row['post_comment_count'];
            $post_date = $row['post_date'];
            $post_views_count = $row['post_views_count'];
+           $fh = fopen($post_content,'r');
+           $data = fread($fh,filesize($post_content));
+           fclose($fh);
+           $row['content'] = $data;
            $arrUpdatePosts = $row;
            
         }
+
         
         if(isset($_POST['update_post'])){
+            $postPath = $post_content;
           $post_title = $_POST['post_title'];
           $post_category_id = $_POST['post_category'];
           $post_author = $_POST['post_author'];
@@ -220,6 +226,9 @@ Class Posts
                   $post_image = $row['post_image'];
               }
           }
+          $fileName = fopen($postPath, "w") or die("Unable to open file!");
+          fwrite($fileName, $post_content);
+            fclose($fileName);
         
             $query = "UPDATE posts SET ";
             $query .="post_title = '{$post_title}', ";
@@ -229,7 +238,7 @@ Class Posts
             $query .="post_author = '{$post_author}', ";
             $query .="post_status = '{$post_status}', ";
             $query .="post_tags = '{$post_tags}', ";
-            $query .="post_content = '{$post_content}', ";
+            $query .="post_content = '{$postPath}', ";
             $query .="post_image = '{$post_image}' ";
             $query .="WHERE post_id = {$edit_post_id} ";
         $update_post = mysqli_query(ConnectToDB::con(),$query);
@@ -279,7 +288,11 @@ $post_tags = $_POST['post_tags'];
 $post_content =  mysqli_real_escape_string(ConnectToDB::con(), $_POST['post_content']); 
 $post_date = $_POST['post_date'];;
 $post_comment_count = 0;
-
+$title = rand(0,10000)."_".$post_title;
+$postFilePath = "../posts/".$title.".txt";
+$fileName = fopen($postFilePath, "w") or die("Unable to open file!");
+fwrite($fileName, $post_content);
+  fclose($fileName);
 
 move_uploaded_file($post_image_temp, "../imgs/$post_image");
 $query = "INSERT INTO posts(
@@ -299,7 +312,7 @@ $query .= "VALUES(
 '{$post_author}',
 now(),
 '{$post_image}',
-'{$post_content}',
+'{$postFilePath}',
 '{$post_tags}',
 '{$post_comment_count}',
 0,

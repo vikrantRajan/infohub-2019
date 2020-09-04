@@ -73,7 +73,7 @@ $arrUpdatePosts = Posts::updatePosts();
     <div class="form-group">
         <label for="post_category">Post Content</label>
         <textarea class="form-control" name="post_content" cols="30" rows="10"
-            id="body" required><?php echo $arrUpdatePosts['post_content']; ?></textarea>
+            id="body" required><?php echo $arrUpdatePosts['content']; ?></textarea>
     </div>
 
     <div class="form-group">

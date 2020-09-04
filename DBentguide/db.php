@@ -1,5 +1,6 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
 Class ConnectToDB {
     // connect to DB
     // static function is to call function elsewhere without creating an instance of the object/class
