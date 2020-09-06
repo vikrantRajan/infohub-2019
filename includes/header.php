@@ -17,7 +17,11 @@
     <!-- Custom CSS -->
     <link href="css/blog-home.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 15ab65f87f17bcc9d59e7e8c63a0a1ca6faf13cb
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

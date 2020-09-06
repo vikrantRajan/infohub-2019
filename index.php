@@ -48,9 +48,15 @@
                $post_image = $row['post_image'];
                $post_content = substr($row['post_content'], 0,50); 
                $post_status = $row['post_status'];
+<<<<<<< HEAD
             //    || $post_date > $today
 
                if($post_status !== 'Published' ) {
+=======
+
+
+               if($post_status !== 'Published' || $post_date < $today) {
+>>>>>>> 15ab65f87f17bcc9d59e7e8c63a0a1ca6faf13cb
                    // We will display nothing for no published
 
                } else {
