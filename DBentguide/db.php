@@ -10,7 +10,8 @@ Class ConnectToDB {
     
         static function con() {
             
-            $conDetails = parse_ini_file("/var/www/entguide/entguide.ini");
+            // $conDetails = parse_ini_file("/var/www/entguide/entguide.ini");
+            $conDetails = parse_ini_file("../../entguide/entguide.ini");
           
             $connect = mysqli_connect( $conDetails['server'], $conDetails['user'], $conDetails['pass'], $conDetails['db'] ); 
             

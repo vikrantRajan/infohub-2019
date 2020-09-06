@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-lg-12">
           
-            <ul class="pagination">
+<!--            <ul class="pagination"> 
             <?php Pages::pager();  ?>
-        </ul>
+        </ul> -->
            <h1 class="page-footer">C14 HUB :) </h1>
             <!-- <a href="index.php"><img class="footer_logo" src="imgs/logo-02.png" alt=""></a> -->
         </div>

@@ -54,7 +54,7 @@
                 
                 
                 ?>
-                <li class='navigation_tags'><a href='https://vikrantrajan.com/CDM/admin/index.php'>Admin</a></li>
+                <!-- <li class='navigation_tags'><a href='http://projects.thecdm.ca/c14/admin/index.php'>Admin</a></li> -->
                 <li class='navigation_tags'><a 
                         href='registration.php'>Register</a></li>
             </ul>

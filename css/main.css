@@ -18,7 +18,7 @@ hr {
 }
 body {
  
-  background: linear-gradient(-65deg,   #333333,  #252525, black, #353332 ) !important;
+  background: linear-gradient(-65deg,   #333333,  #022236, black, #002238 ) !important;
     background-size: 700% 700% !important;
     animation: gradientAbout 10s ease infinite !important;
   
@@ -54,8 +54,9 @@ p, ul {
   position: relative;
  
   text-transform: uppercase;
-  font-size: 2em;
+  font-size: 3em;
   letter-spacing: 4px;
+  font-weight: 500;
   overflow: hidden;
   background: linear-gradient(90deg, #000, rgb(0, 225, 255), rgb(255, 255, 255));
   background-repeat: no-repeat;
@@ -129,7 +130,8 @@ a,
   color: gainsboro;
 }
 .btn-primary {
-  background: blue;
+  background: rgb(19, 149, 182);
+  
 }
 
 .btn-primary:hover {
@@ -142,7 +144,6 @@ a,
 .alertText{
   color: rgb(226, 41, 41);
   font-weight: bold;
-  letter-spacing: 2px;
   text-transform: uppercase;
 }
 .warningText{

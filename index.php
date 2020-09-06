@@ -15,7 +15,6 @@
             <h1 class="page-header">
                 C14 HUB :)
                 
-                <!-- <a href="registration.php" class="btn btn-primary">Register to post a review</a> -->
             </h1>
             <p id="typed"></p>
          
@@ -34,9 +33,12 @@
             } else {
                 $page_1 = ($page * 10) - 10;
             }
-        $query = "SELECT * FROM posts ORDER BY post_date LIMIT $page_1, 10 ";
-        $selectAllPosts = mysqli_query(ConnectToDB::con(), $query);
-
+            $date = date('Y-m-d');
+            $today = strtotime ( '+1 hour' , strtotime ( $date ) ) ;
+            $today = date ( 'Y-m-d' , $today );
+            $query = "SELECT * FROM posts ORDER BY post_date LIMIT $page_1, 10 ";
+            $selectAllPosts = mysqli_query(ConnectToDB::con(), $query);
+            
             while($row = mysqli_fetch_assoc($selectAllPosts)){
                 $post_id = $row['post_id'];
                $post_title = $row['post_title'];
@@ -46,9 +48,9 @@
                $post_image = $row['post_image'];
                $post_content = substr($row['post_content'], 0,50); 
                $post_status = $row['post_status'];
+            //    || $post_date > $today
 
-
-               if($post_status !== 'Published') {
+               if($post_status !== 'Published' ) {
                    // We will display nothing for no published
 
                } else {
@@ -68,9 +70,7 @@
             <?php 
                
             
-            $date = date('Y-m-d');
-            $today = strtotime ( '+1 hour' , strtotime ( $date ) ) ;
-            $today = date ( 'Y-m-d' , $today );
+            
             $threeDaysBefore = strtotime ( '+3 day' , strtotime ( $today ) ) ;
             $threeDaysBefore = date("Y-m-d", $threeDaysBefore);
             $twoDaysBefore = strtotime ( '+2 day' , strtotime ( $today ) ) ;

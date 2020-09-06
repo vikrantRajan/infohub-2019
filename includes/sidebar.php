@@ -3,6 +3,8 @@
 <ul class="pagination">
             <?php Pages::pager();  ?>
         </ul>
+            <!-- Side Widget Well -->
+    <?php include "widget.php"; ?>
     <!-- Blog Search Well -->
     <div class="well bg-dark">
         <h4>Search</h4>
@@ -43,7 +45,7 @@
 
 
     <!-- Blog Categories Well -->
-    <div class="well bg-dark">
+    <!-- <div class="well bg-dark">
 
         <?php 
                 $query = "SELECT * FROM categories";
@@ -59,22 +61,16 @@
                         $cat_id = $row['cat_id'];
 
                         echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
-
                     }
                     ?>
                 </ul>
             </div>
-
-
-
-            <!-- /.col-lg-6 -->
-
+            <-- .col-lg-6 ->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.well -->
+        <-- .row ---|>
+    </div> ->
+    <-- /.well -->
 
-    <!-- Side Widget Well -->
-    <?php include "widget.php"; ?>
+
 
 </div>
