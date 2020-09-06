@@ -18,8 +18,6 @@ Class ConnectToDB {
             if(!$connect)
             {die('ERROR connecting to DB'.mysqli_connect_error());}
             return $connect;
-            // $oDb = new ConnectToDB($connect);
-            // return $oDb;
         }
     }
 

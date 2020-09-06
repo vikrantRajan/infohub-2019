@@ -14,26 +14,35 @@ if(isset($_POST['submit'])){
         $username = mysqli_real_escape_string(ConnectToDB::con(), $username);
         $email = mysqli_real_escape_string(ConnectToDB::con(), $email);
         $password = mysqli_real_escape_string(ConnectToDB::con(), $password);
-    
-        $query = "SELECT randSalt FROM users";
-        $select_randsalt_query = mysqli_query(ConnectToDB::con(), $query);
-        if(!$select_randsalt_query) {
-            die("QUERY FAILED" . mysqli_error(ConnectToDB::con()));
+
+        $reg = "/[a-zA-Z0-9.\-_]{1,}@{1}[a-zA-Z0-9]{3,}[.]{1}[a-zA-Z0-9]{1,}.{0,}/";
+        $regCheck = preg_match($reg, $email);
+        // if email is valid then its true, else false
+        ($regCheck)? $validEmail = true: $validEmail = false;
+        // Only  if  email is valid  we move ahead.
+
+        if($validEmail) {
+            $query = "SELECT randSalt FROM users";
+            $select_randsalt_query = mysqli_query(ConnectToDB::con(), $query);
+            if(!$select_randsalt_query) {
+                die("QUERY FAILED" . mysqli_error(ConnectToDB::con()));
+            }
+        
+            $row = mysqli_fetch_array($select_randsalt_query);
+            $salt = $row['randSalt'];
+            $password = crypt($password, $salt);
+        
+            $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
+            $query .= "VALUES('{$username}', '{$email}', '{$password}', 'Subscriber' )";
+            $register_user_query = mysqli_query(ConnectToDB::con(), $query);
+            if(!$register_user_query) {
+                die("QUERY FAILED" . mysqli_error(ConnectToDB::con()));
+            } else {
+                echo "<h5 class='text-success text-center bg-success'>Registration has been submitted</h5>";
+        
+            }
         }
     
-        $row = mysqli_fetch_array($select_randsalt_query);
-        $salt = $row['randSalt'];
-        $password = crypt($password, $salt);
-    
-        $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
-        $query .= "VALUES('{$username}', '{$email}', '{$password}', 'Subscriber' )";
-        $register_user_query = mysqli_query(ConnectToDB::con(), $query);
-        if(!$register_user_query) {
-            die("QUERY FAILED" . mysqli_error(ConnectToDB::con()));
-        } else {
-            echo "<h5 class='text-success text-center bg-success'>Registration has been submitted</h5>";
-    
-        }
     } else {
         echo "<h5 class='text-error text-center bg-error'>Fields Cannot Be Empty</h5>";
 
@@ -67,17 +76,17 @@ if(isset($_POST['submit'])){
                             <div class="form-group">
                                 <label for="username" class="sr-only">username</label>
                                 <input type="text" name="username" id="username" class="form-control"
-                                    placeholder="Enter Desired Username">
+                                    placeholder="Enter Desired Username" required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
                                 <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="somebody@example.com">
+                                    placeholder="somebody@example.com" required>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="sr-only">Password</label>
                                 <input type="password" name="password" id="key" class="form-control"
-                                    placeholder="Password">
+                                    placeholder="Password" required>
                             </div>
 
                             <input type="submit" name="submit" id="btn-login" class="btn btn-primary btn-lg btn-block"
