@@ -76,29 +76,17 @@ if(isset($_POST['submit'])){
                             <div class="form-group">
                                 <label for="username" class="sr-only">username</label>
                                 <input type="text" name="username" id="username" class="form-control"
-<<<<<<< HEAD
                                     placeholder="Enter Desired Username" required>
-=======
-                                    placeholder="Enter Desired Username">
->>>>>>> 15ab65f87f17bcc9d59e7e8c63a0a1ca6faf13cb
                             </div>
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
                                 <input type="email" name="email" id="email" class="form-control"
-<<<<<<< HEAD
                                     placeholder="somebody@example.com" required>
-=======
-                                    placeholder="somebody@example.com">
->>>>>>> 15ab65f87f17bcc9d59e7e8c63a0a1ca6faf13cb
                             </div>
                             <div class="form-group">
                                 <label for="password" class="sr-only">Password</label>
                                 <input type="password" name="password" id="key" class="form-control"
-<<<<<<< HEAD
                                     placeholder="Password" required>
-=======
-                                    placeholder="Password">
->>>>>>> 15ab65f87f17bcc9d59e7e8c63a0a1ca6faf13cb
                             </div>
 
                             <input type="submit" name="submit" id="btn-login" class="btn btn-primary btn-lg btn-block"
