@@ -9,14 +9,30 @@
                 die("QUERY FAILED" . mysqli_error(ConnectToDB::con()));
             }
       
-        $query = "SELECT * FROM posts as p,comments as c WHERE p.post_id = $other_post_id and c.comment_post_id=$other_post_id and p.post_status='Published'";
+        $query = "SELECT * FROM posts as p,categories as ct WHERE p.post_id = $other_post_id and p.post_status='Published' and p.post_category_id=ct.cat_id";
         $selectAllPosts = mysqli_query(ConnectToDB::con(), $query); 
             while($row = mysqli_fetch_assoc($selectAllPosts)){
-               $post_title = $row['post_title'];
-               $post_author = $row['post_author'];
-               $post_date = $row['post_date'];
-               $post_image = $row['post_image'];
-               $post_content = $row['post_content']; 
+                $data['post_id'] = $row['post_id'];
+                $data['title'] = $row['post_title'];
+                $data['author'] = $row['post_author'];
+                $data['catId'] = $row['cat_id'];
+                $data['category'] = $row['cat_title'];
+                  $data['date'] = $row['post_date'];
+                $data['image'] = $row['post_image'];
+                $data['post_content'] = $row['post_content'];
+                $data['post_status'] = $row['post_status'];
+                $data['commentCount'] = $row['post_comment_count'];
+                $fh = fopen($data['post_content'],'r');
+                $string = fread($fh,filesize($data['post_content']));
+                $data['content'] = $string;
+                fclose($fh);
             }
+
+            $commentQuery = "SELECT * from comments where comment_post_id=$other_post_id";
+            $comments = mysqli_query(ConnectToDB::con(), $commentQuery); 
+            while($comment = mysqli_fetch_assoc($comments)){
+                $data['comments'][] = $comment;
+            }
+            print_r(json_encode($data));
         }
              ?>
