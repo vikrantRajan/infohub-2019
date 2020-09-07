@@ -162,6 +162,7 @@ Class Posts
 
     public static function deletePosts() 
     {
+        $postid = imagename;
         
         if(isset($_GET['delete']))
         {
