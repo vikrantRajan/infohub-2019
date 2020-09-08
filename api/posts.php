@@ -28,7 +28,7 @@
                 fclose($fh);
             }
 
-            $commentQuery = "SELECT * from comments where comment_post_id=$other_post_id";
+            $commentQuery = "SELECT * from comments where comment_post_id=$other_post_id and comment_status='Approved'";
             $comments = mysqli_query(ConnectToDB::con(), $commentQuery); 
             while($comment = mysqli_fetch_assoc($comments)){
                 $data['comments'][] = $comment;
