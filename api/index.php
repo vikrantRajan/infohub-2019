@@ -11,15 +11,20 @@ function myTruncate($input, $numwords){
             
  while($row = mysqli_fetch_assoc($selectAllPosts)){
                 $data['post_id'] = $row['post_id'];
+                $postId = $data['post_id'];
+                $comment = "SELECT count(*) as commentCount FROM comments where comment_post_id=$postId and comment_status='Approved'";
+                $comments = mysqli_query(ConnectToDB::con(), $comment);
+                while($row1 = mysqli_fetch_assoc($comments)){ 
+                  $data['commentCount'] = $row1['commentCount'];
+               }
                $data['title'] = $row['post_title'];
                $data['author'] = $row['post_author'];
                $data['catId'] = $row['cat_id'];
                $data['category'] = $row['cat_title'];
-                 $data['date'] = $row['post_date'];
+               $data['date'] = $row['post_date'];
                $data['image'] = $row['post_image'];
                $data['post_content'] = $row['post_content'];
                $data['post_status'] = $row['post_status'];
-               $data['commentCount'] = $row['post_comment_count'];
                $fh = fopen($data['post_content'],'r');
                $string = fread($fh,filesize($data['post_content']));
                fclose($fh);
