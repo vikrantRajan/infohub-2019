@@ -1,4 +1,69 @@
 <?php include("../DBentguide/db.php"); 
+ $ch = curl_init();
+// set url
+curl_setopt($ch, CURLOPT_URL, "https://cors-anywhere.herokuapp.com/http://canvas.sfu.ca/api/v1/courses");
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer 0JfGSc9doFHEDZY49P8AG5wmcqzTvqrJ7ec8Zs4zjKLVuTOMnSY3mSV7iqQqfC94',"X-Requested-With : XMLHttpRequest"));
+
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//return the transfer as a string
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// $output contains the output string
+$output = curl_exec($ch);
+
+$result = (array) json_decode($output);
+
+foreach($result as $element1) {
+   if($element1 -> default_view != 'wiki' && $element1 -> id != 55848) {
+   $id = $element1 -> id;
+   $name = $element1 -> name;
+   curl_setopt($ch, CURLOPT_URL, "https://cors-anywhere.herokuapp.com/http://canvas.sfu.ca/api/v1/courses/".$id."/assignments");
+   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer 0JfGSc9doFHEDZY49P8AG5wmcqzTvqrJ7ec8Zs4zjKLVuTOMnSY3mSV7iqQqfC94',"X-Requested-With : XMLHttpRequest"));
+   
+   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+   //return the transfer as a string
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   // $output contains the output string
+   $output1 = curl_exec($ch);
+   
+   $result1 = (array) json_decode($output1);
+   foreach($result1 as $assignment) {
+      if($assignment -> due_at) {
+   
+         $today_dt = new DateTime();
+         $datee = explode("T",$assignment -> due_at);
+         $due_dt = new DateTime($datee[0]);
+   if($due_dt > $today_dt) {
+      $row['author'] = 'Canvas';
+      $row['catId'] = '2';
+      $row['category'] = $name;
+      $row['image'] = 'assignment.png';
+      // $row['post'] = $assignment -> description;
+      $row['courseId'] = $assignment -> id;
+      $row['post'] = 'Click to view the assignment in canvas';
+      $row['title'] = $assignment -> name;
+      $row['url'] = $assignment -> html_url;
+      
+      $row['commentCount'] = $assignment -> points_possible;
+      $row['due_dt'] = $assignment -> due_at;
+      $array['posts'][] =  $row;
+   } 
+}else {
+   $row['author'] = 'Canvas';
+   $row['catId'] = '2';
+   $row['category'] = $name;
+   $row['image'] = 'assignment.png';
+   $row['post'] = 'Click to view the assignment in canvas';
+   $row['courseId'] = $assignment -> id;
+   $row['title'] = $assignment -> name;
+   $row['commentCount'] = $assignment -> points_possible;
+   $row['due_dt'] = $assignment -> due_at;
+   $row['url'] = $assignment -> html_url;
+   $array['posts'][] =  $row;
+}
+}
+}
+}
+
 
 function myTruncate($input, $numwords){
     $output = strtok($input, " \n");
