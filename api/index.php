@@ -1,8 +1,12 @@
 <?php include("../DBentguide/db.php"); 
+$configs = include("../DBentguide/config.php"); 
+
+$canvasUrl = $configs['canvasUrl'];
+$token = $configs['token'];
  $ch = curl_init();
 // set url
-curl_setopt($ch, CURLOPT_URL, "https://cors-anywhere.herokuapp.com/http://canvas.sfu.ca/api/v1/courses");
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer 0JfGSc9doFHEDZY49P8AG5wmcqzTvqrJ7ec8Zs4zjKLVuTOMnSY3mSV7iqQqfC94',"X-Requested-With : XMLHttpRequest"));
+curl_setopt($ch, CURLOPT_URL, $canvasUrl."/courses");
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer '.$token,"X-Requested-With : XMLHttpRequest"));
 
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 //return the transfer as a string
@@ -16,7 +20,7 @@ foreach($result as $element1) {
    if($element1 -> default_view != 'wiki' && $element1 -> id != 55848) {
    $id = $element1 -> id;
    $name = $element1 -> name;
-   curl_setopt($ch, CURLOPT_URL, "https://cors-anywhere.herokuapp.com/http://canvas.sfu.ca/api/v1/courses/".$id."/assignments");
+   curl_setopt($ch, CURLOPT_URL, $canvasUrl."/courses/".$id."/assignments");
    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer 0JfGSc9doFHEDZY49P8AG5wmcqzTvqrJ7ec8Zs4zjKLVuTOMnSY3mSV7iqQqfC94',"X-Requested-With : XMLHttpRequest"));
    
    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
