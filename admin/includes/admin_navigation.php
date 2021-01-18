@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">C14 CMS</a>
+        <a class="navbar-brand" href="index.php">C15 CMS</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">

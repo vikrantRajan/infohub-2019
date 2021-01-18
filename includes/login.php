@@ -7,7 +7,7 @@ if(isset($_POST['login'])){
 
   $username = mysqli_real_escape_string(ConnectToDB::con(), $username);
   $password = mysqli_real_escape_string(ConnectToDB::con(), $password);
-
+  
   $query = "SELECT * FROM users WHERE username = '{$username}' ";
   $select_user_query = mysqli_query(ConnectToDB::con(), $query);
   if(!$select_user_query) {

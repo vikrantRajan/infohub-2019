@@ -1,4 +1,5 @@
-<?php include("../DBentguide/db.php"); 
+<?php 
+include("../DBentguide/db.php"); 
 $configs = include("../DBentguide/config.php"); 
 
 $canvasUrl = $configs['canvasUrl'];
@@ -21,7 +22,7 @@ foreach($result as $element1) {
    $id = $element1 -> id;
    $name = $element1 -> name;
    curl_setopt($ch, CURLOPT_URL, $canvasUrl."/courses/".$id."/assignments");
-   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer 0JfGSc9doFHEDZY49P8AG5wmcqzTvqrJ7ec8Zs4zjKLVuTOMnSY3mSV7iqQqfC94',"X-Requested-With : XMLHttpRequest"));
+   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer '.$token,"X-Requested-With : XMLHttpRequest"));
    
    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
    //return the transfer as a string
@@ -30,6 +31,8 @@ foreach($result as $element1) {
    $output1 = curl_exec($ch);
    
    $result1 = (array) json_decode($output1);
+   // print_r(json_encode($result1));
+
    foreach($result1 as $assignment) {
       if($assignment -> due_at) {
    
@@ -48,7 +51,9 @@ foreach($result as $element1) {
       $row['url'] = $assignment -> html_url;
       
       $row['commentCount'] = $assignment -> points_possible;
-      $row['due_dt'] = $assignment -> due_at;
+      // $duedtTime = rtrim($assignment -> due_at, 'Z');
+      // $due_dt = str_replace("T"," ",$duedtTime);
+      $row['due_dt'] = $due_dt;
       $array['posts'][] =  $row;
    } 
 }else {
@@ -60,7 +65,7 @@ foreach($result as $element1) {
    $row['courseId'] = $assignment -> id;
    $row['title'] = $assignment -> name;
    $row['commentCount'] = $assignment -> points_possible;
-   $row['due_dt'] = $assignment -> due_at;
+   $row['due_dt'] = '';
    $row['url'] = $assignment -> html_url;
    $array['posts'][] =  $row;
 }
@@ -68,14 +73,13 @@ foreach($result as $element1) {
 }
 }
 
-
 function myTruncate($input, $numwords){
     $output = strtok($input, " \n");
     while(--$numwords > 0) $output .= " " . strtok(" \n");
    // if($output != $input) $output .= $padding;
     return $output;
   }
- $query = "SELECT * FROM posts as p,categories as c where p.post_category_id=c.cat_id";
+ $query = "SELECT * FROM posts as p,categories as c where p.post_category_id=c.cat_id AND p.post_status='Published'";
  $selectAllPosts = mysqli_query(ConnectToDB::con(), $query);
             
  while($row = mysqli_fetch_assoc($selectAllPosts)){

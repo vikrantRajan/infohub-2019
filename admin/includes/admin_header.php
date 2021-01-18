@@ -24,7 +24,7 @@ header("Location: ../index.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>C14 Admin</title>
+    <title>C15 Admin</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <!-- Bootstrap Core CSS -->

@@ -18,10 +18,9 @@ hr {
 }
 body {
  
-  background: linear-gradient(-65deg,   #333333,  #022236, black, #002238 ) !important;
-    background-size: 700% 700% !important;
-    animation: gradientAbout 10s ease infinite !important;
-  
+  background: linear-gradient(-65deg,   black,  #022236, black ) !important;
+  background-size: 700% 700% !important;
+  animation: gradientAbout 10s ease infinite !important;
   
 }
 @keyframes gradientAbout  {
@@ -176,8 +175,7 @@ footer {
   margin: 0;
 }
 footer .row {
-  background: black;
-  padding: 50px 0 50px 100px;
+  padding: 50px 0 50px 200px;
   color: white;
 }
 .footer_logo {

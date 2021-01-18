@@ -38,8 +38,8 @@ if(isset($_POST['submit'])){
             if(!$register_user_query) {
                 die("QUERY FAILED" . mysqli_error(ConnectToDB::con()));
             } else {
-                echo "<h5 class='text-success text-center bg-success'>Registration has been submitted</h5>";
-        
+                echo "<script>alert('Registration Successful')</script>";
+                header("Location: http://projects.thecdm.ca/c14/"); 
             }
         }
     

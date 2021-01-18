@@ -245,7 +245,7 @@ Class Posts
         $update_post = mysqli_query(ConnectToDB::con(),$query);
         QueryCheck::confirmQuery($update_post);
         if($update_post){
-             echo "<p class='text-success bg-success'>Post Updated: <a href='../post.php?p_id={$edit_post_id}'>View Post</a> Or <a href='posts.php'>Edit More Posts</a></p>";
+             echo "<p class='text-success bg-success'>Post Updated: <a href='http://projects.thecdm.ca/c15/infohub/posts/{$edit_post_id}'>View Post</a> Or <a href='posts.php'>Edit More Posts</a></p>";
         }
         }
         
@@ -286,12 +286,12 @@ $post_image = $_FILES['post_image']['name'];
 // temporary file name while its stored on browser before uploading
 $post_image_temp = $_FILES['post_image']['tmp_name'];
 $post_tags = $_POST['post_tags'];
-$post_content =  mysqli_real_escape_string(ConnectToDB::con(), $_POST['post_content']); 
+$post_content = $_POST['post_content']; 
 $post_date = $_POST['post_date'];;
 $post_comment_count = 0;
 $title = rand(0,10000)."_".$post_title;
 $postFilePath = "../posts/".$title.".txt";
-$fileName = fopen($postFilePath, "w") or die("Unable to open file!");
+$fileName = fopen($postFilePath, "w") or die(error_get_last()['message']);
 fwrite($fileName, $post_content);
   fclose($fileName);
 
@@ -324,8 +324,14 @@ $postQuery = mysqli_query(ConnectToDB::con(), $query);
 // die;
 QueryCheck::confirmQuery($postQuery);
 $the_post_id = mysqli_insert_id(ConnectToDB::con());
-echo "<p class='text-success bg-success'>Post Added: <a href='../post.php?p_id={$the_post_id}'>View Post</a> Or <a
+if($post_status != 'Draft') {
+    echo "<p class='text-success bg-success'>Post Added: <a href='http://projects.thecdm.ca/c15/infohub/'>View Post</a> Or <a
+    href='posts.php'>Edit More Posts</a></p>";
+} else {
+    echo "<p class='text-success bg-success'>Post Drafted <a
         href='posts.php'>Edit More Posts</a></p>";
+}
+
 
 
 }
